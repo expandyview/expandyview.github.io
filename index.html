@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Expanding the Viewpoint of Dynamic Scenes beyond Constrained Camera
+      Motions
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
+    <style>
+      body {
+        font-family: "Noto Sans", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        color: #333;
+      }
+      .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .container {
+        text-align: center;
+      }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+      .authors {
+        font-size: 1.2rem;
+        margin: 20px 0;
+        line-height: 1.8;
+      }
+      .affiliations {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+      .notes {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 30px 0;
+        flex-wrap: wrap;
+      }
+      .button {
+        display: inline-block;
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .button:hover {
+        background-color: #555;
+      }
+      .tagline {
+        font-size: 1.2rem;
+        margin: 40px auto;
+        max-width: 800px;
+        text-align: center;
+        line-height: 1.8;
+      }
+      sup {
+        font-size: 0.7em;
+        vertical-align: super;
+      }
+      .author-name {
+        color: #0366d6;
+      }
+      .abstract {
+        text-align: justify;
+        font-family: Arial, sans-serif;
+        font-size: 1rem;
+        margin: 40px auto;
+        max-width: 800px;
+      }
+      .abstract h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .abstract p {
+        line-height: 1.8;
+      }
+      .results {
+        text-align: justify;
+        font-family: Arial, sans-serif;
+        font-size: 1rem;
+        margin: 40px auto;
+        max-width: 800px;
+      }
+      .results h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .results p {
+        line-height: 1.8;
+      }
+      .syndm {
+        text-align: justify;
+        font-family: Arial, sans-serif;
+        font-size: 1rem;
+        margin: 40px auto;
+        max-width: 800px;
+      }
+      .syndm h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .syndm p {
+        line-height: 1.8;
+      }
+      .diagram-container {
+        margin: 40px auto;
+        max-width: 800px;
+        text-align: center;
+      }
+      .external-link {
+        display: inline-block;
+        background-color: white;
+        color: #333;
+        padding: 8px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: normal;
+        font-family: "Noto Sans", sans-serif;
+        font-size: 1rem;
+        margin: 0 5px;
+      }
+      .external-link:hover {
+        background-color: #f2f2f2;
+      }
+      .publication-links {
+        margin-top: 1.5rem;
+      }
+      .link-block {
+        margin: 0 5px;
+      }
+      .hero {
+        background-color: #b10000;
+        width: 100%;
+        padding: 50px 0;
+        color: white;
+      }
+      .hero-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .paper-button,
+      .code-button {
+        display: inline-block;
+        background-color: white;
+        color: #333;
+        padding: 8px 24px;
+        text-decoration: none;
+        border-radius: 25px;
+        margin: 0 6px;
+        margin-top: 20px;
+        font-family: "Noto Sans", sans-serif;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+      .paper-button:hover,
+      .code-button:hover {
+        background-color: #f0f0f0;
+      }
+      
+      /* 轮播样式 */
+      .slider {
+        margin: 40px auto;
+        max-width: 900px;
+      }
+      
+      .slider-navigation-previous,
+      .slider-navigation-next {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 290486px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+        width: 48px;
+        transform: translateY(-50%);
+        color: #000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      
+      .slider-navigation-previous:hover,
+      .slider-navigation-next:hover {
+        background-color: white;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      }
+      
+      .video-slide {
+        padding: 0 10px;
+      }
+      
+      /* 优化轮播控件样式 */
+      #carousel-demo .carousel-container {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+      }
+      
+      #carousel-demo .carousel-navigation-next,
+      #carousel-demo .carousel-navigation-previous {
+        padding: 0.7rem;
+        background-color: rgba(255,255,255,0.8);
+        border-radius: 50%;
+        top: 50%;
+        position: absolute;
+        z-index: 99;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      #carousel-demo .carousel-navigation-previous {
+        left: 10px;
+      }
+      
+      #carousel-demo .carousel-navigation-next {
+        right: 10px;
+      }
+      
+      #carousel-demo figcaption {
+        margin-top: 10px;
+        background-color: rgba(255,255,255,0.8);
+        padding: 5px;
+        border-radius: 5px;
+      }
+      
+      /* 确保只显示当前视频 */
+      #carousel-demo .item:not(.is-active) {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <div class="hero-inner">
+        <img
+          alt="ACLab Logo"
+          src="assets/aclab.png"
+          style="max-width: 400px; margin-bottom: 20px"
+        />
+        <h1
+          style="
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0 auto 30px;
+            max-width: 900px;
+            font-family: serif;
+          "
+        >
+          Expanding the Viewpoint of Dynamic Scenes beyond Constrained Camera
+          Motions
+        </h1>
+        <p
+          style="
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-family: serif;
+          "
+        >
+          Shaotong Zhu, Le Jiang and ACLab Associates
+        </p>
+
+        <div>
+          <a
+            href="https://openreview.net/pdf?id=L3DxhwXKZk"
+            class="paper-button"
+          >
+            📄 Paper
+          </a>
+          <a href="#" class="code-button"> 💻 Code </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paper abstract -->
+    <section
+      class="section hero"
+      style="background-color: #fff; text-align: center"
+    >
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <div
+              style="
+                background: #fff;
+                border-radius: 18px;
+                padding: 2rem 2rem 1.5rem 2rem;
+                margin-bottom: 2rem;
+                box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            >
+              <h2 class="title is-3" style="color: #333">Abstract</h2>
+              <div class="content has-text-centered">
+                <p style="text-align: justify; color: #333">
+                  In the domain of dynamic Neural Radiance Fields (NeRF) for
+                  novel view synthesis, current state-of-the-art (SOTA)
+                  techniques struggle when the camera's pose deviates
+                  significantly from the primary viewpoint, resulting in
+                  unstable and unrealistic outcomes. This paper introduces
+                  Expanded Dynamic NeRF (ExpanDyNeRF), a monocular NeRF method
+                  that integrates a Gaussian splatting prior to tackle novel
+                  view synthesis with large-angle rotations. ExpanDyNeRF employs
+                  a pseudo ground truth technique to optimize density and color
+                  features, which enables the generation of realistic scene
+                  reconstructions from challenging viewpoints. Additionally, we
+                  present the Synthetic Dynamic Multiview (SynDM) dataset, the
+                  first GTA V-based dynamic multiview dataset designed
+                  specifically for evaluating robust dynamic reconstruction from
+                  significantly shifted views. We evaluate our method
+                  quantitatively and qualitatively on both the SynDM dataset and
+                  the widely recognized NVIDIA dataset, comparing it against
+                  other SOTA methods for dynamic scene reconstruction. Our
+                  evaluation results demonstrate that our method achieves
+                  superior performance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End paper abstract -->
+
+    <div class="content-container">
+      <div
+        style="
+          background: #fff;
+          border-radius: 18px;
+          padding: 2rem 2rem 1.5rem 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <h3 style="color: #333; font-size: 1.8rem; text-align: center">
+          Challenge and Motivation
+        </h3>
+        <ul
+          style="
+            text-align: left;
+            font-size: 1.2rem;
+            list-style-type: disc;
+            padding-left: 2rem;
+          "
+        >
+          <li style="margin-bottom: 1.2rem">
+            <strong style="font-weight: bold; color: #000000"
+              >Challenge:</strong
+            >
+            <span style="color: #8b0000"
+              >Inherent view constraints for monocular video cause the
+              uncertainty</span
+            >
+            of the novel view prediction, which limits the performance of 3D
+            reconstruction models under novel view.
+          </li>
+          <li>
+            <strong style="font-weight: bold; color: #000000"
+              >Study Goal:</strong
+            >
+            Given a casually captured monocular video, ExpanDyNeRF is able to
+            learn a dynamic NeRF model for novel-view synthesis.
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="video-container"
+        style="margin-top: 30px; margin-bottom: 60px"
+      >
+        <video controls autoplay loop muted width="100%">
+          <source src="assets/figure1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div
+        style="
+          background: #fff;
+          border-radius: 18px;
+          padding: 2rem 2rem 1.5rem 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <h3
+          style="
+            color: #333;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+          "
+        >
+          Pipeline
+        </h3>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem"
+            >Foreground-Background Decomposition</strong
+          ><br />
+          In video sequences, backgrounds are largely static while foregrounds
+          are dynamic. Thus, the model decomposes the scene into two parts:
+        </p>
+        <ul
+          style="
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <li>
+            <strong style="color: #800080"
+              >Static Background NeRF ( Φ<sub>b</sub> ):</strong
+            >
+            Trained using all frames to model static background content.
+          </li>
+          <li>
+            <strong style="color: #ff0000"
+              >Dynamic Foreground NeRF ( Φ<sub>f</sub> ):</strong
+            >
+            For each time window, a separate foreground NeRF models dynamic
+            changes.
+          </li>
+        </ul>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          Rendered outputs from both branches are blended to reconstruct the
+          dynamic scene, supervised by the super-resolution loss ( L<sub
+            >sr</sub
+          >
+          ).
+        </p>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem"
+            >Novel View Feature Optimization</strong
+          ><br />
+        </p>
+        <ul
+          style="
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <li>
+            <strong style="color: #daa520">3D Prior Generation:</strong> A
+            Gaussian Splatting Prior creates a 3D model of dynamic foregrounds.
+          </li>
+          <li>
+            <strong style="color: #daa520"
+              >Pseudo Ground Truth Construction:</strong
+            >
+            Synthetic views from novel viewpoints ( P<sub>nv</sub> ) are
+            generated.
+          </li>
+          <li>
+            <strong>Optimization:</strong> Dynamic NeRF are supervised using
+            <span style="color: #008000"
+              >novel view density loss ( L<sub>nv</sub><sup>σ</sup> )</span
+            >
+            and
+            <span style="color: #0000ff"
+              >color loss ( L<sub>nv</sub><sup>c</sup> )</span
+            >.
+          </li>
+        </ul>
+      </div>
+
+      <div class="diagram-container" style="overflow: visible">
+        <img
+          src="assets/pipeline.png"
+          alt="Pipeline Diagram"
+          style="
+            width: 140%;
+            max-width: none;
+            margin-left: -20%;
+            display: block;
+          "
+        />
+      </div>
+
+      <div
+        style="
+          background: #fff;
+          border-radius: 18px;
+          padding: 2rem 2rem 1.5rem 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <h3
+          style="
+            color: #333;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+          "
+        >
+          SynDM Dataset
+        </h3>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem">Motivation</strong><br />
+          Existing dynamic video datasets lack ground-truth for side views,
+          making it impossible to quantitatively evaluate novel view synthesis
+          results at deviated angles. This limitation arises because recording
+          dynamic multi-view videos in real-world settings is extremely
+          difficult or nearly infeasible.
+        </p>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          SynDM fills this gap by providing dynamic multi-view videos with
+          side-view ground-truth, enabling systematic evaluation of novel view
+          rendering performance.
+        </p>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem">Dataset Overview</strong><br />
+        </p>
+        <ul
+          style="
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <li>
+            <strong>Source:</strong> Based on the GTA-V engine, offering
+            realistic visuals and flexible multi-view camera control.
+          </li>
+          <li>
+            <strong>Content:</strong> 9 videos across 3 categories (Human,
+            Animal, Vehicle).
+          </li>
+          <li>
+            <strong>Viewpoint Setup:</strong> 22 cameras (19 horizontally spaced
+            every 5° from −45° to +45°, plus 3 elevated views).
+          </li>
+        </ul>
+      </div>
+
+      <div class="video-container">
+        <video controls autoplay loop muted width="100%">
+          <source src="assets/figure3.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div
+        style="
+          background: #fff;
+          border-radius: 18px;
+          padding: 2rem 2rem 1.5rem 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <h3
+          style="
+            color: #333;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+          "
+        >
+          Qualitative and Quantitative Results
+        </h3>
+        <p style="text-align: justify; font-size: 1rem; line-height: 1.8">
+          We conduct a comprehensive comparison between our ExpanDyNeRF and four
+          SOTA novel view synthesis methods: RoDynRF (Liu et al., 2023),
+          MonoNeRF (Fu et al., 2022), D3DGS (Yang et al., 2024), and D4NeRF
+          (Zhang et al., 2023a), on SynDM and NVIDIA datasets. Qualitative
+          results are shown in the video below with novel view deviated from -30
+          degree to 30 degree, and Quantitative results are shown in Table 1 via
+          FID score, PSNR, and LPIPS. Our method achieves the best performance
+          on both datasets.
+        </p>
+      </div>
+
+      <div class="video-container" style="margin-bottom: 60px">
+        <video controls autoplay loop muted width="100%">
+          <source src="assets/figure2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="image-container">
+        <img
+          src="assets/table1.png"
+          alt="Table 1: Quantitative comparison results on SynDM dataset"
+          width="100%"
+        />
+      </div>
+
+      <div
+        style="
+          background: #fff;
+          border-radius: 18px;
+          padding: 2rem 2rem 1.5rem 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <h3
+          style="
+            color: #333;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+          "
+        >
+          Challenges in ExpanDyNeRF and Improvements via ExpanDyGauss
+        </h3>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem">Limitations of NeRF-based Methods</strong><br />
+          <ul
+            style="
+              text-align: left;
+              font-size: 1rem;
+              line-height: 1.8;
+              padding-left: 1.5rem;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <li><strong>High Computation:</strong> Modeling dynamic scenes with NeRF is slow and memory-intensive.</li>
+            <li><strong>Weak Background Supervision:</strong> Static backgrounds lack pseudo ground truth, and adding generative supervision (e.g., diffusion) is impractical due to NeRF's heavy computational load.</li>
+            <li><strong>Poor High-Resolution Scaling:</strong> NeRF struggles with 1080p+ outputs, requiring complex optimizations.</li>
+          </ul>
+        </p>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem">Advantages of Gaussian Splatting</strong><br />
+          <ul
+            style="
+              text-align: left;
+              font-size: 1rem;
+              line-height: 1.8;
+              padding-left: 1.5rem;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <li><strong>Lightweight and Fast:</strong> Enables efficient training and scalable 360° reconstructions.</li>
+            <li><strong>High-Resolution Friendly:</strong> Easily supports full-HD and higher resolutions.</li>
+          </ul>
+        </p>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem">Expanded Dynamic Gaussian Splatting (ExpanDyGauss)</strong><br />
+          To address these issues, we propose ExpanDyGauss, a monocular Gaussian splatting framework for large-angle novel view synthesis. ExpanDyGauss leverages a video-to-video diffusion model to perform spatial-temporal inpainting, generating consistent pseudo ground truth across 360°, providing effective supervision for both static and dynamic components without significant overhead.
+        </p>
+      </div>
+
+      
+
+      <div
+        style="
+          background: #fff;
+          border-radius: 18px;
+          padding: 2rem 2rem 1.5rem 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <h3
+          style="
+            color: #333;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+          "
+        >
+          Overall Pipeline
+        </h3>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem">Dense Initialization and Segmentation</strong><br />
+          easi3r predicts dense 3D point clouds and camera poses from monocular videos without large camera motion.
+        </p>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          SAM segmentation separates frames into foreground and background, forming foreground Gaussians and background Gaussians.
+        </p>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem">Gaussian Reconstruction and Enhancement</strong><br />
+          <ul
+            style="
+              text-align: left;
+              font-size: 1rem;
+              line-height: 1.8;
+              padding-left: 1.5rem;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <li><strong>4DGS Reconstruction:</strong> Foreground Gaussians are dynamically reconstructed, but side-view details are incomplete.</li>
+            <li><strong>Pseudo Ground Truth Alignment:</strong> FreeSplatter generates object-centered Gaussians, aligned back to the scene via rigid point matching.</li>
+            <li><strong>Diffusion-based Completion:</strong> CogVideo performs spatial-temporal inpainting along orbital trajectories to fill unobserved regions.</li>
+            <li><strong>Final Refinement:</strong> New diffusion-generated frames supervise an extra round of 4DGS training for complete scene recovery.</li>
+          </ul>
+        </p>
+      </div>
+
+      <div class="diagram-container" style="overflow: visible">
+        <img
+          src="assets/gaussDiagram.png"
+          alt="Gaussian Diagram"
+          style="
+            width: 140%;
+            max-width: none;
+            margin-left: -20%;
+            display: block;
+          "
+        />
+      </div>
+
+      <!-- 视频轮播部分 - 采用简单直接的方法实现 -->
+      <div style="width: 110%; margin: 20px -5%; position: relative;">
+        <!-- 视频容器 -->
+        <div id="video-container" style="position: relative;">
+          <video id="video-1" controls autoplay loop muted style="width:100%; height:auto; display:block;">
+            <source src="assets/initialization_real.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+          </video>
+          <video id="video-2" controls autoplay loop muted style="width:100%; height:auto; display:none;">
+            <source src="assets/initialization_synDM.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+          </video>
+          
+          <!-- 导航按钮 -->
+          <button id="prev-btn" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">◀</button>
+          <button id="next-btn" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">▶</button>
+        </div>
+      </div>
+      
+      <!-- 简单轮播脚本 -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // 获取元素
+          const video1 = document.getElementById('video-1');
+          const video2 = document.getElementById('video-2');
+          const prevBtn = document.getElementById('prev-btn');
+          const nextBtn = document.getElementById('next-btn');
+          
+          // 当前显示的视频索引
+          let currentVideo = 1;
+          const totalVideos = 2;
+          
+          // 显示指定视频
+          function showVideo(index) {
+            if (index === 1) {
+              video1.style.display = 'block';
+              video2.style.display = 'none';
+            } else {
+              video1.style.display = 'none';
+              video2.style.display = 'block';
+            }
+            currentVideo = index;
+          }
+          
+          // 上一个视频
+          prevBtn.addEventListener('click', function() {
+            let newIndex = currentVideo - 1;
+            if (newIndex < 1) newIndex = totalVideos;
+            showVideo(newIndex);
+          });
+          
+          // 下一个视频
+          nextBtn.addEventListener('click', function() {
+            let newIndex = currentVideo + 1;
+            if (newIndex > totalVideos) newIndex = 1;
+            showVideo(newIndex);
+          });
+          
+          // 初始显示第一个视频
+          showVideo(1);
+        });
+      </script>
+
+      <!-- 图片轮播部分 - 采用与视频轮播相同的方式实现 -->
+      <div style="width: 110%; margin: 40px -5%; position: relative;">
+        <!-- 图片容器 -->
+        <div id="image-container" style="position: relative;">
+          <img id="image-1" src="assets/newResult_real.png" alt="Real Scene Results" style="width:100%; height:auto; display:block;">
+          <img id="image-2" src="assets/newResult_synDM.png" alt="SynDM Scene Results" style="width:100%; height:auto; display:none;">
+          
+          <!-- 导航按钮 -->
+          <button id="img-prev-btn" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">◀</button>
+          <button id="img-next-btn" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">▶</button>
+        </div>
+      </div>
+      
+      <!-- 图片轮播脚本 -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // 获取元素
+          const image1 = document.getElementById('image-1');
+          const image2 = document.getElementById('image-2');
+          const imgPrevBtn = document.getElementById('img-prev-btn');
+          const imgNextBtn = document.getElementById('img-next-btn');
+          
+          // 当前显示的图片索引
+          let currentImage = 1;
+          const totalImages = 2;
+          
+          // 显示指定图片
+          function showImage(index) {
+            if (index === 1) {
+              image1.style.display = 'block';
+              image2.style.display = 'none';
+            } else {
+              image1.style.display = 'none';
+              image2.style.display = 'block';
+            }
+            currentImage = index;
+          }
+          
+          // 上一张图片
+          imgPrevBtn.addEventListener('click', function() {
+            let newIndex = currentImage - 1;
+            if (newIndex < 1) newIndex = totalImages;
+            showImage(newIndex);
+          });
+          
+          // 下一张图片
+          imgNextBtn.addEventListener('click', function() {
+            let newIndex = currentImage + 1;
+            if (newIndex > totalImages) newIndex = 1;
+            showImage(newIndex);
+          });
+          
+          // 初始显示第一张图片
+          showImage(1);
+        });
+      </script>
+
+      <div
+        style="
+          background: #fff;
+          border-radius: 18px;
+          padding: 2rem 2rem 1.5rem 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <h3
+          style="
+            color: #333;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+          "
+        >
+          Demo Results
+        </h3>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          Our method generates dynamic Gaussian Splatting models for novel view synthesis on both synthetic datasets and real-world captured videos. The results demonstrate the effectiveness of our approach in handling different scenarios.
+        </p>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem">Real-world Data</strong><br />
+          To demonstrate the effectiveness of our method in the real world
+          application, we applied our method on a casually captured monocular
+          video. Our approach can generate a dynamic Gaussian Splatting model for 
+          reasonable novel view synthesis in real-world scenarios.
+        </p>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+          "
+        >
+          <strong style="font-size: 1.2rem">Synthesis Data</strong><br />
+          A demo of the results on SynDM dataset. For a monocular input video
+          with dynamic scene, our method can generate a dynamic Gaussian
+          Splatting model and synthesize novel views.
+        </p>
+      </div>
+
+      <!-- 视频轮播部分 - 用于展示Demo视频 -->
+      <div style="width: 110%; margin: 20px -5%; position: relative;">
+        <!-- 视频容器 -->
+        <div id="demo-container" style="position: relative;">
+          <video id="demo-1" controls autoplay loop muted style="width:100%; height:auto; display:block;">
+            <source src="assets/presentvideo2.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+          </video>
+          <video id="demo-2" controls autoplay loop muted style="width:100%; height:auto; display:none;">
+            <source src="assets/presentvideo.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+          </video>
+          
+          <!-- 导航按钮 -->
+          <button id="demo-prev-btn" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">◀</button>
+          <button id="demo-next-btn" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">▶</button>
+        </div>
+      </div>
+      
+      <!-- Demo视频轮播脚本 -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // 获取元素
+          const demo1 = document.getElementById('demo-1');
+          const demo2 = document.getElementById('demo-2');
+          const demoPrevBtn = document.getElementById('demo-prev-btn');
+          const demoNextBtn = document.getElementById('demo-next-btn');
+          
+          // 当前显示的视频索引
+          let currentDemo = 1;
+          const totalDemos = 2;
+          
+          // 显示指定视频
+          function showDemo(index) {
+            if (index === 1) {
+              demo1.style.display = 'block';
+              demo2.style.display = 'none';
+            } else {
+              demo1.style.display = 'none';
+              demo2.style.display = 'block';
+            }
+            currentDemo = index;
+          }
+          
+          // 上一个视频
+          demoPrevBtn.addEventListener('click', function() {
+            let newIndex = currentDemo - 1;
+            if (newIndex < 1) newIndex = totalDemos;
+            showDemo(newIndex);
+          });
+          
+          // 下一个视频
+          demoNextBtn.addEventListener('click', function() {
+            let newIndex = currentDemo + 1;
+            if (newIndex > totalDemos) newIndex = 1;
+            showDemo(newIndex);
+          });
+          
+          // 初始显示第一个视频
+          showDemo(1);
+        });
+      </script>
+    </div>
+  </body>
+</html>
