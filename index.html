@@ -454,6 +454,7 @@
             line-height: 1.8;
             padding-left: 1.5rem;
             margin-bottom: 1.5rem;
+            list-style-type: disc;
           "
         >
           <li>
@@ -492,9 +493,7 @@
             margin-bottom: 1.5rem;
           "
         >
-          <strong style="font-size: 1.2rem"
-            >Novel View Feature Optimization</strong
-          ><br />
+          <strong style="font-size: 1.2rem">Novel View Feature Optimization</strong><br />
         </p>
         <ul
           style="
@@ -503,6 +502,7 @@
             line-height: 1.8;
             padding-left: 1.5rem;
             margin-bottom: 1.5rem;
+            list-style-type: disc;
           "
         >
           <li>
@@ -608,6 +608,7 @@
             line-height: 1.8;
             padding-left: 1.5rem;
             margin-bottom: 1.5rem;
+            list-style-type: disc;
           "
         >
           <li>
@@ -712,6 +713,7 @@
           "
         >
           <strong style="font-size: 1.2rem">Limitations of NeRF-based Methods</strong><br />
+        </p>
           <ul
             style="
               text-align: left;
@@ -719,13 +721,14 @@
               line-height: 1.8;
               padding-left: 1.5rem;
               margin-bottom: 1.5rem;
+              list-style-type: disc;
             "
           >
             <li><strong>High Computation:</strong> Modeling dynamic scenes with NeRF is slow and memory-intensive.</li>
             <li><strong>Weak Background Supervision:</strong> Static backgrounds lack pseudo ground truth, and adding generative supervision (e.g., diffusion) is impractical due to NeRF's heavy computational load.</li>
             <li><strong>Poor High-Resolution Scaling:</strong> NeRF struggles with 1080p+ outputs, requiring complex optimizations.</li>
           </ul>
-        </p>
+        
         <p
           style="
             text-align: justify;
@@ -735,6 +738,7 @@
           "
         >
           <strong style="font-size: 1.2rem">Advantages of Gaussian Splatting</strong><br />
+        </p>
           <ul
             style="
               text-align: left;
@@ -742,12 +746,12 @@
               line-height: 1.8;
               padding-left: 1.5rem;
               margin-bottom: 1.5rem;
+              list-style-type: disc;
             "
           >
             <li><strong>Lightweight and Fast:</strong> Enables efficient training and scalable 360° reconstructions.</li>
             <li><strong>High-Resolution Friendly:</strong> Easily supports full-HD and higher resolutions.</li>
           </ul>
-        </p>
         <p
           style="
             text-align: justify;
@@ -1031,11 +1035,11 @@
         <!-- 视频容器 -->
         <div id="demo-container" style="position: relative;">
           <video id="demo-1" controls autoplay loop muted style="width:100%; height:auto; display:block;">
-            <source src="assets/presentvideo2.mp4" type="video/mp4">
+            <source src="assets/presentvideo_real.mp4" type="video/mp4">
             您的浏览器不支持视频标签。
           </video>
           <video id="demo-2" controls autoplay loop muted style="width:100%; height:auto; display:none;">
-            <source src="assets/presentvideo.mp4" type="video/mp4">
+            <source src="assets/presentvideo_synDM.mp4" type="video/mp4">
             您的浏览器不支持视频标签。
           </video>
           
@@ -1088,6 +1092,90 @@
           showDemo(1);
         });
       </script>
+
+      <div
+        style="
+          background: #fff;
+          border-radius: 18px;
+          padding: 2rem 2rem 1.5rem 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        <h3
+          style="
+            color: #333;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+          "
+        >
+          Application
+        </h3>
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+          "
+        >
+          <strong style="font-size: 1.2rem">Robotic Perception and Navigation</strong><br />
+        </p>
+        <ul
+          style="
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            list-style-type: disc;
+          "
+        >
+          <li>Example: Small indoor robots or drones use a single forward-facing camera to reconstruct their environment, plan paths, and avoid obstacles.</li>
+          <li>Example: Low-cost delivery robots navigate office buildings using only monocular vision for real-time 3D mapping.</li>
+        </ul>
+        
+        <p
+          style="
+            text-align: justify;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+          "
+        >
+          <strong style="font-size: 1.2rem">Human Motion Capture and Sports Analysis</strong><br />
+        </p>
+        <ul
+          style="
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            list-style-type: disc;
+          "
+        >
+          <li>Example: Fans record the concert and reconstruct an unforgettable 4D concert scene.</li>
+          <li>Example: Sports broadcasters generate 3D replay effects (e.g., freeze and rotate scenes) from single broadcast cameras.</li>
+        </ul>
+      </div>
+
+      <div class="diagram-container" style="overflow: visible; margin-top: 30px; margin-bottom: 60px;">
+        <img
+          src="assets/applications.png"
+          alt="Application Diagram"
+          style="
+            width: 140%;
+            max-width: none;
+            margin-left: -20%;
+            display: block;
+          "
+        />
+      </div>
     </div>
   </body>
 </html>

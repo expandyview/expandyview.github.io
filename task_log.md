@@ -180,3 +180,42 @@
 - 内容顺序与视频展示顺序一致，提供更连贯的浏览体验
 - 保持了页面的整体风格和交互方式不变
 - 改善了内容的组织逻辑，使信息展示更有条理
+
+### 添加新的"Application"文本框
+
+- 位置在"Demo Results"部分之后，Demo 视频轮播之前
+- 样式与"Overall Pipeline"相匹配（白色背景、圆角、阴影等）
+- 包含两个主要应用领域：机器人感知与导航、人体运动捕捉与体育分析
+- 每个领域提供了具体的应用示例
+
+### 删除多余的"Application"部分
+
+- 删除了位于"Demo Results"部分前的重复"Application"部分
+- 保留了位于 Demo 视频轮播后的"Application"部分
+- 确保页面布局更加合理，避免内容重复
+
+### 在 Application 部分添加图片
+
+- 在 Application 文本框下方添加了图片 application.png
+- 设置图片宽度为 100%，最大宽度为 800px，保持与其他内容一致的视觉效果
+- 添加了适当的上下边距（margin-top: 30px; margin-bottom: 60px）使布局更加协调
+- 确保图片居中显示，增强页面美观度和内容关联性
+
+### 统一图片展示风格
+
+- 修改了 applications.png 图片的格式，使其与 gaussDiagram.png 的样式保持一致
+- 将图片宽度从 100% 调整为 140%，使图片更加醒目
+- 移除了 max-width: 800px 的限制，改为 max-width: none，允许图片按比例扩展
+- 添加了 margin-left: -20% 的负边距，使图片能够向两侧延伸，呈现更完整的视觉效果
+- 移除了 margin: 0 auto 居中设置，统一使用负边距扩展的展示方式
+- 保留了 overflow: visible 属性，确保图片不会被容器剪裁
+
+### 修复文本框中缺少黑点的列表项
+
+- 检查并修复了所有文本框中未正确显示黑点的列表项
+- 将 "Novel View Feature Optimization" 部分的文本正确格式化为列表项
+- 修复了 "Limitations of NeRF-based Methods" 和 "Advantages of Gaussian Splatting" 部分的列表结构，确保每个列表项前都有黑点
+- 将 Application 部分的 "Example" 文本从普通段落改为正确的列表格式
+- 为所有 `<ul>` 标签添加 `list-style-type: disc` 属性，确保列表项前显示黑点
+- 确保列表结构正确，即 `<ul>` 标签不嵌套在 `<p>` 标签内，而是作为并列元素
+- 保持了列表的其他样式（行距、字体大小、对齐方式等）不变
